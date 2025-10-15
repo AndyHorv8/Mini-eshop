@@ -1,7 +1,6 @@
 {
   "name": "mini-eshop",
   "homepage": "https://andyhorv8.github.io/mini-eshop",
-
   "private": true,
   "version": "0.0.0",
   "type": "module",

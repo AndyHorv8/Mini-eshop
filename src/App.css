@@ -86,3 +86,32 @@ p {
   font-weight: bold;
   margin-top: 20px;
 }
+
+.mini-cart {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  width: 250px;
+  text-align: left;
+}
+
+.mini-cart h3 {
+  margin-top: 0;
+  color: #0070f3;
+}
+
+.mini-cart ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mini-cart li {
+  border-bottom: 1px solid #eee;
+  padding: 6px 0;
+  font-size: 0.9rem;
+}

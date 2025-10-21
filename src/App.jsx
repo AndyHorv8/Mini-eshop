@@ -2,7 +2,7 @@ import { useState } from 'react'
 import './App.css'
 
 function App() {
-  const [cartCount, setCartCount] = useState(0)
+  const [cartItems, setCartItems] = useState([])
 
   const products = [
     { id: 1, name: 'Tričko React', price: 19.99, image: 'https://via.placeholder.com/150' },
@@ -10,8 +10,8 @@ function App() {
     { id: 3, name: 'Samolepky DevLife', price: 4.99, image: 'https://via.placeholder.com/150' },
   ]
 
-  const addToCart = () => {
-    setCartCount(cartCount + 1)
+  const addToCart = (product) => {
+    setCartItems([...cartItems, product])
   }
 
   return (
@@ -21,7 +21,7 @@ function App() {
         <p>Objavte naše skvelé produkty za super ceny!</p>
 
         <div className="cart-info">
-          🛒 Košík: <strong>{cartCount}</strong>
+          🛒 Košík: <strong>{cartItems.length}</strong>
         </div>
       </header>
 
@@ -31,9 +31,25 @@ function App() {
             <img src={product.image} alt={product.name} />
             <h3>{product.name}</h3>
             <p>{product.price.toFixed(2)} €</p>
-            <button onClick={addToCart}>Pridať do košíka</button>
+            <button onClick={() => addToCart(product)}>Pridať do košíka</button>
           </div>
         ))}
+      </div>
+
+      {/* Mini-košík */}
+      <div className="mini-cart">
+        <h3>🛒 Mini-košík</h3>
+        {cartItems.length === 0 ? (
+          <p>Košík je prázdny</p>
+        ) : (
+          <ul>
+            {cartItems.map((item, index) => (
+              <li key={index}>
+                {item.name} – {item.price.toFixed(2)} €
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     </div>
   )

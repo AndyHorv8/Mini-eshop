@@ -130,3 +130,11 @@ p {
 .remove-btn:hover {
   transform: scale(1.2);
 }
+
+/* Sucet cien */
+.total {
+  margin-top: 10px;
+  font-weight: bold;
+  text-align: right;
+  color: gray;
+}

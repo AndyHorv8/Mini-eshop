@@ -14,10 +14,13 @@ function App() {
     setCartItems([...cartItems, product])
   }
 
-  {/* 💛 NOVÉ – funkcia na odstránenie položky z košíka */}
+  // Funkcia na odstránenie položky z košíka 
   const removeFromCart = (indexToRemove) => {
     setCartItems(cartItems.filter((_, index) => index !== indexToRemove))
   }
+
+  // Vypocet celkovej ceny
+  const totalPrice = cartItems.reduce((sum, item) => sum + item.price, 0)
 
   return (
     <div className="app">
@@ -41,26 +44,31 @@ function App() {
         ))}
       </div>
 
-      {/* 💛 ÚPRAVA mini-košíka – pridanie tlačidla ❌ */}
+   {/* ÚPRAVA mini-košíka  pridanie tlačidla ❌  */}
+
       <div className="mini-cart">
         <h3>🛒 Mini-košík</h3>
         {cartItems.length === 0 ? (
           <p>Košík je prázdny</p>
         ) : (
-          <ul>
-            {cartItems.map((item, index) => (
-              <li key={index}>
-                {item.name} – {item.price.toFixed(2)} €
-                {/* 💛 TOTO PRIDAJ */}
-                <button className="remove-btn" onClick={() => removeFromCart(index)}>
-                  ❌
-                </button>
-              </li>
-            ))}
-          </ul>
+          <>
+            <ul>
+              {cartItems.map((item, index) => (
+                <li key={index}>
+                  {item.name} – {item.price.toFixed(2)} €
+                  <button className="remove-btn" onClick={() => removeFromCart(index)}>
+                    ❌
+                  </button>
+                </li>
+              ))}
+            </ul>
+              {/* Zobrazenie celkovej ceny */}
+            <p className="total">Spolu: {totalPrice.toFixed(2)} €</p>
+          </>
         )}
       </div>
     </div>
+
   )
 }
 

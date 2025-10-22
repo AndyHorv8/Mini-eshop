@@ -14,6 +14,11 @@ function App() {
     setCartItems([...cartItems, product])
   }
 
+  {/* 💛 NOVÉ – funkcia na odstránenie položky z košíka */}
+  const removeFromCart = (indexToRemove) => {
+    setCartItems(cartItems.filter((_, index) => index !== indexToRemove))
+  }
+
   return (
     <div className="app">
       <header>
@@ -36,7 +41,7 @@ function App() {
         ))}
       </div>
 
-      {/* Mini-košík */}
+      {/* 💛 ÚPRAVA mini-košíka – pridanie tlačidla ❌ */}
       <div className="mini-cart">
         <h3>🛒 Mini-košík</h3>
         {cartItems.length === 0 ? (
@@ -46,6 +51,10 @@ function App() {
             {cartItems.map((item, index) => (
               <li key={index}>
                 {item.name} – {item.price.toFixed(2)} €
+                {/* 💛 TOTO PRIDAJ */}
+                <button className="remove-btn" onClick={() => removeFromCart(index)}>
+                  ❌
+                </button>
               </li>
             ))}
           </ul>
